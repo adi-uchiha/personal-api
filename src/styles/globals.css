@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dark .three-d {
+  text-shadow: 0 5px 0 #533519;
+}
+.three-d{
+  text-shadow: 3px 3px 0px #d7d7d7;
+}
+
+.dark .simplebar-scrollbar::before{
+  background: #fff;
+}
