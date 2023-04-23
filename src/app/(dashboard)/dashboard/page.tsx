@@ -1,5 +1,5 @@
 import RequestApiKey from "@/components/RequestApiKey";
-import ApiDashboard from "@/components/RequestApiKey";
+import ApiDashboard from "@/components/ApiDashboard";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Metadata } from "next";
@@ -21,7 +21,9 @@ const page =  async () => {
   })
 
   return <div className="max-w-7xl mx-auto mt-16">
-    {apiKey ? <ApiDashboard /> : <RequestApiKey />}
+    {apiKey ? 
+    // @ts-expect-error Server Component
+    <ApiDashboard /> : <RequestApiKey />}
   </div>  
 
 }

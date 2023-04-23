@@ -1,6 +1,6 @@
 'use client'
 
-import { signIn } from "next-auth/react"
+import { signIn, signOut } from "next-auth/react"
 import { FC, useState } from "react"
 import Button from "./ui/Button"
 import { toast } from "./ui/Toast"
@@ -13,7 +13,7 @@ const SignOutButton: FC<SignOutButtonProps> = ({}) => {
   const signUserOut = async () => {
     setIsLoading(true)
     try {
-      await signIn('google')
+      await signOut()
     } catch (error) {
       console.log(error)
       toast({
