@@ -1,10 +1,12 @@
+import RequestApiKey from "@/components/RequestApiKey";
+import ApiDashboard from "@/components/RequestApiKey";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: 'DashBoard | Personal API',
   description: 'Manage you personal API service'
 }
