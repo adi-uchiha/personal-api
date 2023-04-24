@@ -5,14 +5,13 @@ import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
 
 const redis = new Redis({
-  // @ts-expect-error
   url: process.env.REDIS_URL,
   token: process.env.REDIS_SECRET,
 })
 
 const ratelimit = new Ratelimit({
   redis: redis,
-  limiter: Ratelimit.slidingWindow(5, '1 h'),
+  limiter: Ratelimit.slidingWindow(50, '1 h'),
 })
 
 export default withAuth(
@@ -33,26 +32,26 @@ export default withAuth(
     }
 
     // Manage route protection
-    const token = await getToken({ req })
-    const isAuth = !!token
-    const isAuthPage = req.nextUrl.pathname.startsWith('/login')
+    // const token = await getToken({ req })
+    // const isAuth = !!token
+    // const isAuthPage = req.nextUrl.pathname.startsWith('/login')
 
-    const sensitiveRoutes = ['/dashboard']
+    // const sensitiveRoutes = ['/dashboard']
 
-    if (isAuthPage) {
-      if (isAuth) {
-        return NextResponse.redirect(new URL('/dashboard', req.url))
-      }
+    // if (isAuthPage) {
+    //   if (isAuth) {
+    //     return NextResponse.redirect(new URL('/dashboard', req.url))
+    //   }
 
-      return null
-    }
+    //   return null
+    // }
 
-    if (
-      !isAuth &&
-      sensitiveRoutes.some((route) => pathname.startsWith(route))
-    ) {
-      return NextResponse.redirect(new URL('/login', req.url))
-    }
+    // if (
+    //   !isAuth &&
+    //   sensitiveRoutes.some((route) => pathname.startsWith(route))
+    // ) {
+    //   return NextResponse.redirect(new URL('/login', req.url))
+    // }
   },
   {
     callbacks: {
