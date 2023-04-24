@@ -5,6 +5,7 @@ import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
 
 const redis = new Redis({
+  // @ts-expect-error
   url: process.env.REDIS_URL,
   token: process.env.REDIS_SECRET,
 })
